@@ -1,12 +1,37 @@
 body {
-  background-color: #f8f9fa;
+  background: linear-gradient(135deg, #e3f0ff 0%, #f8f9fa 100%);
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
 }
 .sidebar {
   min-height: 100vh;
-  border-right: 1px solid #dee2e6;
+  border-right: 1px solid #e0e0e0;
+  background: #fff;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.03);
 }
-.machine-card {
+.posh-card {
+  background: #fff;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
   transition: box-shadow 0.2s, border-color 0.2s;
+}
+.posh-card:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  border-color: #007bff;
+}
+.navbar {
+  font-size: 1.1rem;
+}
+.navbar-brand {
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
+.nav-link {
+  color: #555 !important;
+  transition: color 0.2s;
+}
+.nav-link.active, .nav-link:hover {
+  color: #007bff !important;
+  font-weight: 600;
 }
 /* Live update indicator styles */
 .live-indicator {
@@ -37,5 +62,8 @@ body {
   .sidebar {
     min-height: auto;
     border-right: none;
+    box-shadow: none;
   }
 }
+/* Add Google Fonts for posh look */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
