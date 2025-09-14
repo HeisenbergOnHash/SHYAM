@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IoT Monitoring Dashboard</title>
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">IoT Dashboard</a>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar -->
+      <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+        <div class="position-sticky pt-3">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">
+                <span data-feather="home"></span>
+                Dashboard
+              </a>
+            </li>
+            <!-- Add more sidebar items if needed -->
+          </ul>
+        </div>
+      </nav>
+      <!-- Main Content -->
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          <div class="row mt-4 mb-2">
+            <div class="col-md-6 mb-2">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Total Power Consumption</h5>
+                  <p class="card-text"><span id="total-power" class="fw-bold">0</span> W</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-2">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Average Efficiency</h5>
+                  <p class="card-text"><span id="avg-efficiency" class="fw-bold">0</span> %</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <div id="alert-banner" class="alert alert-danger d-none mt-3" role="alert"></div>
+        <h2 class="mt-4">Machines Overview</h2>
+        <div class="row" id="machines-container">
+          <!-- Machine cards will be injected here by JS -->
+        </div>
+        <h2 class="mt-5">Live Charts</h2>
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <canvas id="powerChart"></canvas>
+          </div>
+          <div class="col-md-4 mb-4">
+            <canvas id="efficiencyChart"></canvas>
+          </div>
+          <div class="col-md-4 mb-4">
+            <canvas id="uptimeChart"></canvas>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

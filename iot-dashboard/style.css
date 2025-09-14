@@ -1,0 +1,41 @@
+body {
+  background-color: #f8f9fa;
+}
+.sidebar {
+  min-height: 100vh;
+  border-right: 1px solid #dee2e6;
+}
+.machine-card {
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+/* Live update indicator styles */
+.live-indicator {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #28a745;
+  margin-right: 6px;
+  animation: pulse 1s infinite;
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 #28a74588; }
+  70% { box-shadow: 0 0 0 8px #28a74500; }
+  100% { box-shadow: 0 0 0 0 #28a74500; }
+}
+.machine-alert {
+  border: 2px solid #dc3545 !important;
+  box-shadow: 0 0 10px #dc3545;
+}
+.card-status-running {
+  background-color: #d4edda;
+}
+.card-status-stopped {
+  background-color: #f8d7da;
+}
+@media (max-width: 768px) {
+  .sidebar {
+    min-height: auto;
+    border-right: none;
+  }
+}
