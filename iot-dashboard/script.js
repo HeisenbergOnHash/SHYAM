@@ -32,6 +32,10 @@ function loadStates() {
         efficiency: 0,
         temperature: 0,
         vibration: 0,
+        rpm: 0, // Rotations per minute
+        load: 0, // Load %
+        oil: 0, // Oil level %
+        error: 'None', // Error code
         history: { power: [], efficiency: [], uptime: [] },
         alert: false
       };
@@ -53,11 +57,20 @@ function updateMachineData() {
       state.efficiency = Math.round(60 + Math.random() * 40); // 60-100%
       state.temperature = Math.round(50 + Math.random() * 40); // 50-90C
       state.vibration = +(2 + Math.random() * 8).toFixed(1); // 2-10 mm/s
+      state.rpm = Math.round(1200 + Math.random() * 800); // 1200-2000 RPM
+      state.load = Math.round(40 + Math.random() * 60); // 40-100 %
+      state.oil = Math.round(60 + Math.random() * 40); // 60-100 %
+      // Random error code (simulate rare errors)
+      state.error = Math.random() < 0.1 ? `E${Math.floor(100 + Math.random() * 900)}` : 'None';
     } else {
       state.power = 0;
       state.efficiency = 0;
       state.temperature = Math.round(25 + Math.random() * 5); // 25-30C
       state.vibration = +(0.5 + Math.random()).toFixed(1); // 0.5-1.5 mm/s
+      state.rpm = 0;
+      state.load = 0;
+      state.oil = Math.round(60 + Math.random() * 10); // 60-70 %
+      state.error = 'None';
     }
     // Save history for charts
     state.history.power.push(state.power);
@@ -95,6 +108,10 @@ function renderMachines() {
           <p>Efficiency: <span>${state.efficiency} %</span></p>
           <p>Temperature: <span>${state.temperature} °C</span></p>
           <p>Vibration: <span>${state.vibration} mm/s</span></p>
+          <p>RPM: <span>${state.rpm}</span></p>
+          <p>Load: <span>${state.load} %</span></p>
+          <p>Oil Level: <span>${state.oil} %</span></p>
+          <p>Error Code: <span class="${state.error !== 'None' ? 'text-danger fw-bold' : 'text-success'}">${state.error}</span></p>
           <button class="btn btn-${state.status === 'Running' ? 'danger' : 'success'} btn-sm" onclick="toggleMachine(${m.id})">
             Turn ${state.status === 'Running' ? 'OFF' : 'ON'}
           </button>
